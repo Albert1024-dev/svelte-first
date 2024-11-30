@@ -1,0 +1,13 @@
+{
+  "name": "Web",
+  "page": [
+    {
+      "id": "login",
+      "title": "Login",
+      "subtitle": "Sign in to your account",
+      "url": "NA",
+      "directUrl": "/start",
+      "cookieName": "login_token"
+    }
+  ]
+}
