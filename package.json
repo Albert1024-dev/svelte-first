@@ -30,7 +30,6 @@
     "vite-plugin-static-copy": "^2.1.0"
   },
   "dependencies": {
-    "@rollup/rollup-win32-x64-msvc": "^4.27.4",
     "config": "^3.3.12",
     "dotenv": "^16.4.5"
   }

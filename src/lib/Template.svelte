@@ -1,8 +1,44 @@
 <script>
-    import { sineOut } from 'svelte/easing';
+  import { sineOut } from 'svelte/easing';
 
 
   import Sidebar from './Sidebar.svelte';
+
+  window.onload = function () {
+    const sideBarNav = document.getElementById("mobile-nav");
+    const navShadow = document.getElementById('nav-shadow');
+    sideBarNav.classList.add("hidden");
+    const openSidebar = document.getElementById("openSideBar");
+
+    openSideBar.onclick = function () {
+        if (sideBarNav.classList.contains("hidden")) {
+            sideBarNav.classList.remove("hidden");
+        }
+    }
+
+
+    const closeSideBar = document.getElementById("closeSideBar");
+
+    closeSideBar.onclick = function () {
+    if (sideBarNav.classList.contains("hidden")) {
+        sideBarNav.classList.remove("hidden");
+    } else {
+        sideBarNav.classList.add("hidden");
+    }
+    }
+
+    function handleResize() {
+        if (window.innerWidth > 1024) {
+            sideBarNav.classList.add('hidden'); // Hide the sidebar
+        }
+    }
+
+    // Run on page load
+    handleResize();
+
+    // Attach resize event listener
+    window.addEventListener('resize', handleResize);
+  }
 
 </script>
 
@@ -130,13 +166,7 @@
         </div>
       </nav>
 
-
-
-
-
       <div class="mx-auto max-w-7xl px-4 py-7 sm:px-6 lg:px-8 rounded-md">
-
-
         <div class="overflow-hidden rounded-lg bg-white shadow">
           <h2 class="sr-only" id="profile-overview-title">Profile Overview</h2>
           <div class="bg-white p-6">
@@ -156,23 +186,12 @@
               </div>
             </div>
           </div>
-
         </div>
-
-
-
-
 
         <div class="min-h-full py-6">
 
-
         </div>
-
       </div>
-
-
     </div>
-
-    <script src="../js/sidebar.js"></script>
   </div>
 </main>
