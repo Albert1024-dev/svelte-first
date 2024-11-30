@@ -6,9 +6,7 @@
 
   window.onload = function () {
     const sideBarNav = document.getElementById("mobile-nav");
-    const navShadow = document.getElementById('nav-shadow');
     sideBarNav.classList.add("hidden");
-    const openSidebar = document.getElementById("openSideBar");
 
     openSideBar.onclick = function () {
         if (sideBarNav.classList.contains("hidden")) {
