@@ -1,42 +1,28 @@
 <script>
   import { sineOut } from 'svelte/easing';
 
-
   import Sidebar from './Sidebar.svelte';
 
-  window.onload = function () {
-    const sideBarNav = document.getElementById("mobile-nav");
-    sideBarNav.classList.add("hidden");
-
-    openSideBar.onclick = function () {
-        if (sideBarNav.classList.contains("hidden")) {
-            sideBarNav.classList.remove("hidden");
-        }
+  async function handleSidebar(event) {
+    event.preventDefault();
+    const sideBarNav = document.getElementById("mobile-nav").classList;
+    if (sideBarNav.contains("hidden")) {
+      sideBarNav.remove("hidden");
     }
-
-
-    const closeSideBar = document.getElementById("closeSideBar");
-
-    closeSideBar.onclick = function () {
-    if (sideBarNav.classList.contains("hidden")) {
-        sideBarNav.classList.remove("hidden");
-    } else {
-        sideBarNav.classList.add("hidden");
-    }
-    }
-
-    function handleResize() {
-        if (window.innerWidth > 1024) {
-            sideBarNav.classList.add('hidden'); // Hide the sidebar
-        }
-    }
-
-    // Run on page load
-    handleResize();
-
-    // Attach resize event listener
-    window.addEventListener('resize', handleResize);
   }
+
+  async function handleResize() {
+    const sideBarNav = document.getElementById("mobile-nav");
+    if (window.innerWidth > 1024) {
+      if (sideBarNav) sideBarNav.classList.add('hidden'); // Hide the sidebar
+    }
+  }
+
+  // Run on page load
+  handleResize();
+
+  // Attach resize event listener
+  window.addEventListener('resize', handleResize);
 
 </script>
 
@@ -48,7 +34,7 @@
 
     <div class="lg:pl-72 ">
       <div class="sticky top-0 z-40 flex h-16 shrink-0 items-center gap-x-4 border-b border-gray-200 bg-white px-4 shadow-sm sm:gap-x-6 sm:px-6 lg:px-8">
-        <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" id="openSideBar">
+        <button type="button" class="-m-2.5 p-2.5 text-gray-700 lg:hidden" on:click={handleSidebar}>
           <span class="sr-only">Open sidebar</span>
           <svg class="size-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />

@@ -1,13 +1,26 @@
 
 
 <!-- Off-canvas menu for mobile, show/hide based on off-canvas menu state. -->
-<div class="relative z-50 lg:hidden" role="dialog" aria-modal="true" id="mobile-nav">
+<script>
+  
+  async function closeSideBar() {
+    const sideBarNav = document.getElementById("mobile-nav").classList;
+    if (sideBarNav.contains("hidden")) {
+      sideBarNav.remove("hidden");
+    } else {
+      sideBarNav.add("hidden");
+    }
+  }
+</script>
+
+<div class="relative z-50 lg:hidden hidden" role="dialog" aria-modal="true" id="mobile-nav">
   <div class="fixed inset-0 bg-gray-900/80" aria-hidden="true"></div>
 
   <div class="fixed inset-0 flex">
     <div class="relative mr-16 flex w-full max-w-xs flex-1">
-      <div class="absolute left-full top-0 flex w-16 justify-center pt-5" id="closeSideBar">
-        <button type="button" class="-m-2.5 p-2.5">
+      <!-- svelte-ignore a11y_click_events_have_key_events -->
+      <div class="absolute left-full top-0 flex w-16 justify-center pt-5">
+        <button type="button" class="-m-2.5 p-2.5" on:click={closeSideBar}>
           <span class="sr-only">Close sidebar</span>
           <svg class="size-6 text-white" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true" data-slot="icon">
             <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
